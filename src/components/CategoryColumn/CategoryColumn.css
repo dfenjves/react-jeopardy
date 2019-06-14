@@ -1,0 +1,5 @@
+.CategoryColumn{
+  display: grid;
+  grid-template-rows: repeat(6, 1fr);
+  height:100%;
+}

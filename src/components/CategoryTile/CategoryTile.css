@@ -1,0 +1,10 @@
+.CategoryTile {
+  display: flex;
+  background-color: blue;
+  color: white;
+  margin: 3px 3px 6px 3px;
+  /* min-height: 16.6vh; */
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+}

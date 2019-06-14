@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css?family=Oswald:700&display=swap');
+
+.QuestionTile {
+  display:flex;
+  background-color: blue;
+  color: #E1A46F;
+  margin: 3px;
+  align-items: center;
+  justify-content: center;
+  text-shadow: 2px 2px #000000;
+  font-size: 4vw;
+  font-family: 'Oswald', sans-serif;
+  /* min-height: 16.6vh; */
+}
