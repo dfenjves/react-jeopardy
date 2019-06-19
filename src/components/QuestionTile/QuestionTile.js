@@ -65,7 +65,7 @@ class QuestionTile extends React.Component {
           contentLabel="Example Modal"
         >
           <div className="question">
-            <p onClick={this.closeModal}>In what year was Upperline Code founded?</p>
+            <p onClick={this.closeModal}>{this.props.questionText}</p>
           </div>
           <div className="answer">
             <input
