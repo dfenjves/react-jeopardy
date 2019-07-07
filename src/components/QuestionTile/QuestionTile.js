@@ -16,7 +16,7 @@ const customStyles = {
     backgroundColor: 'blue',
     color: 'white',
     textShadow: '2px 2px #000000',
-    fontSize: '3em',
+    fontSize: '2em',
     textTransform: 'uppercase',
     padding: '5% 10%',
     textAlign: 'center',
@@ -85,9 +85,10 @@ class QuestionTile extends React.Component {
             <input
              onKeyDown = {(e)=>this.handleKeyDown(e,this.props.answer)}
              ref={(input) => { this.nameInput = input; }}
-             style={{backgroundColor: 'blue', border: 'none', color: 'white', outline: 'none', fontSize: '0.6em'}}
+             style={{display: this.state.answered=="incorrect" ? 'none' : '', backgroundColor: 'blue', border: 'none', color: 'white', outline: 'none', fontSize: '0.6em'}}
              type="text"
             />
+            <p style={{display: this.state.answered=="incorrect"? '' : 'none', color: 'white'}}>{`incorrect! the answer is ${this.props.answer}`}</p>
           </div>
         </Modal>
       </div>

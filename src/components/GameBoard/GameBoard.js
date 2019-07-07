@@ -18,13 +18,10 @@ class GameBoard extends React.Component {
   }
 
   render(){
+    console.log(this.props.data)
     return(
       <div className="GameBoard">
-        <CategoryColumn updateScore={this.updateScore}/>
-        <CategoryColumn updateScore={this.updateScore}/>
-        <CategoryColumn updateScore={this.updateScore}/>
-        <CategoryColumn updateScore={this.updateScore}/>
-        <CategoryColumn updateScore={this.updateScore}/>
+        {this.props.data.map( category =><CategoryColumn data={category} updateScore={this.updateScore}/> )}
         <h1 style={{color: 'white'}}>{`Score: $${this.state.score}`}</h1>
       </div>
     )
