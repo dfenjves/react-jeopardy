@@ -8,18 +8,24 @@ class GameBoard extends React.Component {
 
     this.state = {
       gameOver:false,
-      pointsUsed:0
+      pointsUsed:0,
+      score:0
     }
+  }
+
+  updateScore=(pointsToAdd)=>{
+    this.setState((previousState)=>({score: previousState.score + pointsToAdd}))
   }
 
   render(){
     return(
       <div className="GameBoard">
-        <CategoryColumn />
-        <CategoryColumn />
-        <CategoryColumn />
-        <CategoryColumn />
-        <CategoryColumn />
+        <CategoryColumn updateScore={this.updateScore}/>
+        <CategoryColumn updateScore={this.updateScore}/>
+        <CategoryColumn updateScore={this.updateScore}/>
+        <CategoryColumn updateScore={this.updateScore}/>
+        <CategoryColumn updateScore={this.updateScore}/>
+        <h1 style={{color: 'white'}}>{`Score: $${this.state.score}`}</h1>
       </div>
     )
   }

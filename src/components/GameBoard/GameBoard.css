@@ -3,8 +3,5 @@
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   background-color: black;
   border: 6px black solid;
-  margin: 15px;
-  /* max-height: 90vh; */
-  /* min-height: 524px;
-  min-width: 826px; */
+  margin: 3vh 10%;
 }

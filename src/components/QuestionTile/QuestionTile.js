@@ -16,7 +16,7 @@ const customStyles = {
     backgroundColor: 'blue',
     color: 'white',
     textShadow: '2px 2px #000000',
-    fontSize: '3vw',
+    fontSize: '3em',
     textTransform: 'uppercase',
     padding: '5% 10%',
     textAlign: 'center',
@@ -31,7 +31,8 @@ class QuestionTile extends React.Component {
 
     this.state = {
       clicked: false,
-      modalIsOpen: false
+      modalIsOpen: false,
+      answered: null
     }
 
     this.openModal = this.openModal.bind(this);
@@ -53,10 +54,22 @@ class QuestionTile extends React.Component {
     this.setState({modalIsOpen: false});
   }
 
+  handleKeyDown(e, answer){
+    if(e.key === 'Enter'){
+      if(e.target.value.toLowerCase() == answer.toLowerCase()){
+        this.props.updateScore(this.props.value)
+        this.setState({answered: "correct"}, () => setTimeout(this.closeModal,2000))
+      }else{
+        this.props.updateScore(-this.props.value)
+        this.setState({answered: "incorrect"}, () => setTimeout(this.closeModal,2000))
+      }
+    }
+  }
+
   render(){
     return(
-      <div className="QuestionTile" onClick={this.openModal}>
-        <h2>{this.props.value}</h2>
+      <div className="QuestionTile" onClick={ this.state.answered ? '' : this.openModal}>
+        <h2 style={{display: this.state.answered ? 'none': ''}}>{`$${this.props.value}`}</h2>
         <Modal
           isOpen={this.state.modalIsOpen}
           onAfterOpen={this.afterOpenModal}
@@ -64,11 +77,13 @@ class QuestionTile extends React.Component {
           style={customStyles}
           contentLabel="Example Modal"
         >
-          <div className="question">
+          <div className="question" style={{ display: this.state.answered ? 'none' : '' }}>
             <p onClick={this.closeModal}>{this.props.questionText}</p>
           </div>
+          <img src = {this.state.answered=="correct" ? 'https://media.giphy.com/media/EQnKFGTw418nqpytB9/giphy.gif' : 'https://media.giphy.com/media/25EAueTny5f3MKbVRo/giphy.gif' } style={{ display: this.state.answered ? '' : 'none' }}/>
           <div className="answer">
             <input
+             onKeyDown = {(e)=>this.handleKeyDown(e,this.props.answer)}
              ref={(input) => { this.nameInput = input; }}
              style={{backgroundColor: 'blue', border: 'none', color: 'white', outline: 'none', fontSize: '0.6em'}}
              type="text"
